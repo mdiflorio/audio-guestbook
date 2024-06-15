@@ -35,6 +35,7 @@
 #define SDCARD_CS_PIN    10
 #define SDCARD_MOSI_PIN  7
 #define SDCARD_SCK_PIN   14
+
 // And those used for inputs
 #define HOOK_PIN 0
 #define PLAYBACK_BUTTON_PIN 1
@@ -116,11 +117,16 @@ void setup() {
   mixer.gain(0, 1.0f);
   mixer.gain(1, 1.0f);
 
-  // Play a beep to indicate system is online
-  waveform1.begin(beep_volume, 440, WAVEFORM_SINE);
-  wait(1000);
-  waveform1.amplitude(0);
-  delay(1000);
+    //   // stop here if no SD card, but print a message
+    // while (1) {
+    //   Serial.println("Playing sound");
+    //     // Play a beep to indicate system is online
+    //   waveform1.begin(beep_volume, 440, WAVEFORM_SINE);
+    //   wait(1000);
+    //   waveform1.amplitude(0);
+    //   delay(1000);
+    // }
+
 
   // Initialize the SD card
   SPI.setMOSI(SDCARD_MOSI_PIN);
